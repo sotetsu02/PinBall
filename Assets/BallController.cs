@@ -18,6 +18,7 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.ScoreText.GetComponent<Text>().text = "Score: " + this.Score;
         //シーン中のGameOverTextオブジェクトを取得
         this.gameoverText = GameObject.Find("GameOverText");
 
@@ -35,12 +36,11 @@ public class BallController : MonoBehaviour
             this.gameoverText.GetComponent<Text>().text = "Game Over";
         }
         //ScoreTextを表示
-        this.ScoreText.GetComponent<Text>().text = "Score: " + this.Score;
+       
     }
 
     void OnCollisionEnter(Collision other)
     {
-
         if (other.gameObject.tag == "SmallStarTag")
         {
             this.Score += 5;
@@ -57,6 +57,7 @@ public class BallController : MonoBehaviour
         {
             this.Score += 100;
         }
+        this.ScoreText.GetComponent<Text>().text = "Score: " + this.Score;
     }
 }
 
